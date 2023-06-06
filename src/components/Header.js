@@ -4,6 +4,7 @@ import { IoMdSearch } from "react-icons/io";
 import { api } from "../config/api";
 
 const Header = () => {
+  
       const [user, setUser] = useState([]);
       useEffect(() => {
         axios
@@ -12,6 +13,7 @@ const Header = () => {
             setUser(res.data);
           });
       }, []);
+      
   return (
     <nav className="flex justify-between p-2 md:p-6 md:h-[70px] shadow-md items-center">
       <h5 className="text-xs md:text-normal lg:text-xl">Users List</h5>

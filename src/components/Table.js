@@ -4,6 +4,7 @@ import { CgDetailsMore } from "react-icons/cg";
 import { CiCircleMore } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import { BiEditAlt } from "react-icons/bi";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -13,10 +14,10 @@ import { api } from "../config/api";
 import DeleteModal from "./DeleteModal";
 import AddModal from "./AddModal";
 import EditModal from "./EditModal";
+
 const Table = () => {
   const [users, setUsers] = useState([]);
-  const [items, setItems] = useState(0);
-  const [itemsPerPage, setItermsPerPage] = useState(1);
+
   const [temptUser, setTemptUser] = useState({});
   const [showInfo, setShowInfo] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
@@ -26,7 +27,6 @@ const Table = () => {
   useEffect(() => {
     axios.get(api).then((res) => {
       setUsers(res.data);
-      setItems(res.data.length);
     });
   }, [users]);
 
@@ -110,26 +110,43 @@ const Table = () => {
       )}
       {/* INFO */}
       {showInfo && (
-        <div className="w-[350px] bg-gray-300 absolute top-[200px] left-24">
+        <div className="w-[350px] bg-gray-200 absolute top-[200px] left-24 p-8 rounded-xl">
           <div className="flex justify-between">
             {" "}
             <img
               src={temptUser.image}
-              className="w-[60px] h-[60px] rounded-3xl"
+              className="w-[60px] h-[60px] rounded-3xl m-4"
             />
-            <button onClick={() => setShowInfo(false)}>close</button>
+            <button onClick={() => setShowInfo(false)}>
+              <AiOutlineCloseCircle />
+            </button>
           </div>
-          <div> {temptUser.name} </div>
-          <div> {temptUser.email} </div>
-          <div> {temptUser.title} </div>
+          <div className="m-4"> {temptUser.name} </div>
+          <div className="m-4"> {temptUser.email} </div>
+          <div className="m-4"> {temptUser.title} </div>
           {temptUser.status ? (
-            <div className="bg-green-300 w-fit w-fit px-2 rounded-2xl">
+            <div className="bg-green-300 w-fit w-fit px-2 rounded-2xl m-4">
               {" "}
               Success
             </div>
           ) : (
-            <div className="bg-red-600 w-fit px-2 rounded-2xl">danger</div>
+            <div className="bg-red-600 w-fit px-2 rounded-2xl m-4">danger</div>
           )}
+
+          <button
+            className="text-red-500 m-4 text-lg"
+            onClick={() => handleDeleteWindow(temptUser)}
+          >
+            {" "}
+            <MdDelete />{" "}
+          </button>
+          <button
+            onClick={() => handleEditWindow(temptUser)}
+            className="text-green-500 m-4 text-lg"
+          >
+            {" "}
+            <BiEditAlt />{" "}
+          </button>
         </div>
       )}
 
@@ -194,7 +211,7 @@ const Table = () => {
                     Success
                   </div>
                 ) : (
-                  <div className="bg-red-600 w-fit px-2 rounded-2xl">
+                  <div className="bg-red-600 w-fit py-1 px-4 rounded-2xl">
                     danger
                   </div>
                 )}
@@ -217,9 +234,9 @@ const Table = () => {
               </td>
               <td className="p-2 text-left md:hidden">
                 {" "}
-                <button onClick={() => handleDetail(user)}>
+                <button onClick={() => handleDetail(user)} className="text-xs">
                   {" "}
-                  <CiCircleMore />{" "}
+                  Details
                 </button>
               </td>
             </tr>

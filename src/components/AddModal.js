@@ -20,7 +20,7 @@ const AddModal = (props) => {
     axios.get(api).then((res) => {
       setUsers(res.data);
     });
-    toast.success(`${temptUser.name} is successfully added!`)
+    toast.success(`New User Is successfully added!`)
   };
   return (
     <div className=" bg-red-100 absolute top-[150px] left-[50px] md:left-[300px] p-8 md:p-12 rounded-xl">
