@@ -5,7 +5,6 @@ function App() {
   return (
     <div className="App">
       <ManagementPage />
-      <h1>ffff</h1>
     </div>
   );
 }
