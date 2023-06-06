@@ -13,7 +13,7 @@ const DeleteModal = (props) => {
       toast.warning(`${temptUser.name} got deleted!`)
   }
   return (
-    <div className=" bg-red-100 absolute top-[250px] left-[50px] md:left-[300px] p-8 md:p-16 rounded-xl">
+    <div className=" bg-red-100 absolute top-[250px] left-1 md:left-[50px] md:left-[300px] p-1 md:p-16 rounded-xl">
       <div>{`ARE YOU SURE YOU WANT TO DELETE ${temptUser.name} ?`}</div>
       <div className="text-white">
         <button className="w-[150px] m-2 bg-red-600 rounded-md" onClick={() => {handleDelete(temptUser.id)}} >Yes</button>

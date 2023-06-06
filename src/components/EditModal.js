@@ -24,7 +24,7 @@ const EditModal = (props) => {
     toast.success(`${temptUser.name} Is Successfully Edited!`);
   };
   return (
-    <div className=" bg-red-100 absolute top-[150px] left-[50px] md:left-[300px] p-8 md:p-12 rounded-xl">
+    <div className=" bg-red-100 absolute top-[150px] left-6 md:left-[300px] p-4 md:p-12 rounded-xl">
       <div className=" m-2 px-6 rounded-2xl">
         <img src={image} />
         {/* <input placeholder="image" type="file" onChange={() => setImage()} /> */}
@@ -71,14 +71,16 @@ const EditModal = (props) => {
       </div>
 
       <div className="text-white">
-        <button
-          className="w-[150px] m-2 bg-green-600 rounded-md"
-          onClick={() => {
-            handleAdd();
-          }}
-        >
-          Add
-        </button>
+        <div>
+          <button
+            className="w-[150px] m-2 bg-green-600 rounded-md"
+            onClick={() => {
+              handleAdd();
+            }}
+          >
+            Add
+          </button>
+        </div>
         <button
           className="w-[150px] m-2 bg-yellow-300 rounded-md"
           onClick={() => setEditModalShow(false)}

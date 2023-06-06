@@ -33,11 +33,14 @@ const Table = () => {
   const handleEditWindow = (user) => {
     setTemptUser(user);
     setEditModalShow(true);
+    setShowInfo(false)
   };
 
   const handleDeleteWindow = (user) => {
     setTemptUser(user);
     setShowDelete(true);
+    setShowInfo(false)
+
   };
 
   const handleDetail = (user) => {
@@ -110,7 +113,7 @@ const Table = () => {
       )}
       {/* INFO */}
       {showInfo && (
-        <div className="w-[350px] bg-gray-200 absolute top-[200px] left-24 p-8 rounded-xl">
+        <div className=" bg-gray-200 absolute top-[200px] left-2 p-8 rounded-xl">
           <div className="flex justify-between">
             {" "}
             <img
